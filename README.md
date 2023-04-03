@@ -1,4 +1,4 @@
-# rodecodex
+# codex
 
 A new Flutter project.
 
@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Random notes
+Main structure of this project is based on this article: https://medium.com/@ishanakilas8/flutter-searching-list-view-with-json-data-657b422aff6b
+
+assets/search.json is generated from this jekyll repo: https://github.com/arnodeceuninck/studentencodex
+Just run it, this generates code from the search.json file. Copy paste the output (_site/search.json) to assets/search.json
+
+Build apk: flutter build apk --split-per-abi
+More info: https://docs.flutter.dev/deployment/android
+

@@ -1,6 +1,6 @@
 {
-    "name": "rodecodex",
-    "short_name": "rodecodex",
+    "name": "codex",
+    "short_name": "codex",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

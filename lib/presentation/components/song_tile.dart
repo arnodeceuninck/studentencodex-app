@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rodecodex/data/data_model.dart';
-import 'package:rodecodex/presentation/screens/song_details_page.dart';
+import 'package:codex/data/data_model.dart';
+import 'package:codex/presentation/screens/song_details_page.dart';
 
 class SongTile extends StatelessWidget {
   final Song song;

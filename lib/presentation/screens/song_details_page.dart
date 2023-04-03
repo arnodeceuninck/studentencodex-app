@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:rodecodex/data/data_model.dart';
+import 'package:codex/data/data_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SongDetailsPage extends StatelessWidget {
@@ -19,98 +19,89 @@ class SongDetailsPage extends StatelessWidget {
         title: Text('${songTitle()}'),
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 16.0,
-            ),
-            SizedBox(
-              height: 22.0,
-            ),
-            Text(
-              '${songTitle()}',
-              style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.w700,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 22.0,
               ),
-              textAlign: TextAlign.left,
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Pagina: ${song.page}',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Melodie: ${song.melodie}',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Auteur: ${song.author}',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Note: ${song.note}',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 12.0, right: 12.0, bottom: 20.0),
-                  child: // add song content (format as html)
-                      Html(
-                    data: song.content,
+              Center(
+                child: Text(
+                  songTitle(),
+                  style: const TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 12.0,
+              ),
+              // show melodie, author, page and note if available
+              if (song.page != null && song.page.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Pagina: ${song.page}',
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+
+              // Same, but left aligned
+
+              if (song.melodie != null && song.melodie.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Melodie: ${song.melodie}',
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+
+              if (song.author != null && song.author.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Auteur: ${song.author}',
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+
+              if (song.note != null && song.note.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Note: ${song.note}',
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 20.0),
+                child: Html(
+                  data: song.content,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

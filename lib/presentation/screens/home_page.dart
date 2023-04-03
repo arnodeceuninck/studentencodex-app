@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rodecodex/data/data_model.dart';
-import 'package:rodecodex/domain/repository.dart';
-import 'package:rodecodex/presentation/components/loading_widget.dart';
-import 'package:rodecodex/presentation/components/song_tile.dart';
+import 'package:codex/data/data_model.dart';
+import 'package:codex/domain/repository.dart';
+import 'package:codex/presentation/components/loading_widget.dart';
+import 'package:codex/presentation/components/song_tile.dart';
 
 class HomePage extends StatefulWidget {
   @override
