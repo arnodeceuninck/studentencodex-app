@@ -30,3 +30,22 @@ class Song {
     };
   }
 }
+
+class Book {
+  String title="";
+  String id="";
+
+  Book(this.title, this.id);
+
+  Book.fromFson(Map<String, dynamic> json) {
+    title = json['title'] ?? "";
+    id = json['id'] ?? "";
+  }
+
+  Map<String, dynamic> toJson(){
+    return {
+      'title': title,
+      'id': id,
+    };
+  }
+}

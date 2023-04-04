@@ -4,16 +4,26 @@ import 'package:flutter/foundation.dart';
 import 'package:codex/data/data_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-List<Song> parseSongs(String responseBody) {
-  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Song>((json) => Song.fromFson(json)).toList();
+Map<String, List<Song>> parseSongs(String responseBody) {
+  final antwerpse = jsonDecode(responseBody)["antwerpse"].cast<Map<String, dynamic>>();
+  final rodex_oud = jsonDecode(responseBody)["rodex_oud"].cast<Map<String, dynamic>>();
+  final antwerpse_parsed = antwerpse.map<Song>((json) => Song.fromFson(json)).toList();
+  final rodex_oud_parsed = rodex_oud.map<Song>((json) => Song.fromFson(json)).toList();
+  return {"antwerpse": antwerpse_parsed, "rodex_oud": rodex_oud_parsed};
 }
 
-Future<List<Song>> getSongs() {
-  // get the users from the search.json file in the assets folder
+Future<List<Book>> getBooks() {
+  return rootBundle.loadString('assets/codices.json').then((jsonStr) {
+    return [Book("Antwerpse Codex", "antwerpse"), Book("Rodex Oud", "rodex_oud")];
+  });
+
+}
+
+Future<Map<String, List<Song>>> getSongs() {
+  // get the users from the codices.json file in the assets folder
   // Print debug line to see if the file is loaded
-  print('Loading search.json');
-  return rootBundle.loadString('assets/search.json').then((jsonStr) {
+  print('Loading codices.json');
+  return rootBundle.loadString('assets/codices.json').then((jsonStr) {
     return compute(parseSongs, jsonStr);
   });
 }

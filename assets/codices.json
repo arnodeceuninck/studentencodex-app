@@ -1,4 +1,4 @@
-[
+{"rodex_oud": [
   
   {
     "title": "Aan de oevers van de Schelde",
@@ -1650,4 +1650,30 @@
   } 
 
   
+],
+"antwerpse": [
+  
+  {
+    "title": "Gaudeamus igitur",
+    "url": "http://localhost:4000/antwerpse/gaudeamusigitiur.html",
+    "page": "38",
+    "content": "<ol>\n  <li>\n    <p>Gaudeamus igitur,\nIuvenes dum sumus,\nPost jucundam juventutem\nPost molestam senectutem\nNos habebit humus.</p>\n  </li>\n  <li>\n    <p>Ubi sunt, qui ante nos\nIn mundo fuere,\nVadite ad superos,\nTransite ad inferos,\nUbi jam fuere.</p>\n  </li>\n  <li>\n    <p>Vita nostra brevis est,\nBrevi finietur,\nVenit mors velociter,\nRapit nos atrociter,\nNemini parcetur.</p>\n  </li>\n  <li>\n    <p>Vivat Academia,\nVivant Professores,\nVivat membrum quodlibet,\nVivant membra quaelibet,\nSemper sint in flore!</p>\n  </li>\n  <li>\n    <p>Vivant omnes virgines\nFaciles, formosae\nVivant et mulieres\nTenerae, amabiles\nBonae, laboriosae.</p>\n  </li>\n  <li>\n    <p>Vivat et respublica,\nEt qui illam regit,\nVivat nostra civitas,\nMaecenatum caritas,\nQuae nos hic protegit.</p>\n  </li>\n  <li>\n    <p>Pereat tristitia,\nPereant osores,\nPereat diabolus,\nQuivis Antiburschius,\nAtque irrisores.</p>\n  </li>\n  <li>\n    <p>Quis confluxus hodie\nAcademicorum?\nE longinquo convenerunt,\nProtinusque successerunt\nIn commune forum.</p>\n  </li>\n  <li>\n    <p>Vivat nostra societas,\nVivant studiosi!\nCrescat una veritas,\nFloreat fraternitas,\nPatriae prosperitas.</p>\n  </li>\n  <li>\n    <p>Alma Mater floreat,\nQuae nos educavit,\nCaros et commilitones,\nDissitas in regiones\nSparsos, congregavit.</p>\n  </li>\n</ol>\n",
+    "author": null,
+    "melodie": null,
+    "note": "Dit lied gaat tot de middeleeuwen terug en verscheen voor het eerst in gedrukte versie in 1781, bewerkt door Christian Willhelm Kindleben (1748-1785)"
+  } ,
+
+  
+  {
+    "title": "Io vivat!",
+    "url": "http://localhost:4000/antwerpse/iovivat.html",
+    "page": "37",
+    "content": "<ol>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nHoc est amoris poculum,\ndoloris est antidotum.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nDum nihil est in poculo,\niam repleatur denuo.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nNos iungit amicitia,\net vinum praebet gaudia.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nEst vita nostra brevior,\net mors amara longior.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nOsores nostri pereant,\namici semper floreant.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n  <li>\n    <p>Io vivat! Io vivat!\nNostrorum sanitas!\nIam tota Academia,\nnobiscum amet gaudia.\nIo vivat! Io vivat!\nNostrorum sanitas!</p>\n  </li>\n</ol>\n",
+    "author": null,
+    "melodie": null,
+    "note": "Internationaal studentenlied ontstaan in Leiden aan het eind van de 18e eeuw"
+  } 
+
+  
 ]
+}
