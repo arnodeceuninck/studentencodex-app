@@ -22,5 +22,11 @@ assets/search.json is generated from this jekyll repo: https://github.com/arnode
 Just run it, this generates code from the search.json file. Copy paste the output (_site/search.json) to assets/search.json
 
 Build apk: flutter build apk --split-per-abi
+
+### Building for play store
+Be sure the keys are set up correctly
+
+flutter build appbundle
+
 More info: https://docs.flutter.dev/deployment/android
 
