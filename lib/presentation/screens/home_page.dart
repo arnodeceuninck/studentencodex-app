@@ -16,6 +16,8 @@ class _HomePageState extends State<HomePage> {
   List<Song> _songs = [];
   List<Song> _songsDisplay = [];
 
+  TextEditingController _searchController = TextEditingController();
+
   bool _isLoadingBooks = true;
   bool _isLoadingSongs = true;
 
@@ -86,29 +88,46 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _searchBar() {
+  Widget _searchBar() {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: TextField(
-        autofocus: false,
-        onChanged: (searchText) {
-          searchText = searchText.toLowerCase();
-          setState(() {
-            _songsDisplay = _songs.where((s) {
-              var stitle = s.title.toLowerCase();
-              var scontent = s.content.toLowerCase();
-              var spage = s.page.toLowerCase();
-              return stitle.contains(searchText) ||
-                  scontent.contains(searchText) ||
-                  spage.contains(searchText);
-            }).toList();
-          });
-        },
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          prefixIcon: Icon(Icons.search),
-          hintText: 'Search Songs',
-        ),
+      child: Stack(
+        children: [
+          TextField(
+            controller: _searchController,
+            autofocus: false,
+            onChanged: (searchText) {
+              searchText = searchText.toLowerCase();
+              setState(() {
+                _songsDisplay = _songs.where((s) {
+                  var stitle = s.title.toLowerCase();
+                  var scontent = s.content.toLowerCase();
+                  var spage = s.page.toLowerCase();
+                  return stitle.contains(searchText) ||
+                      scontent.contains(searchText) ||
+                      spage.contains(searchText);
+                }).toList();
+              });
+            },
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              prefixIcon: Icon(Icons.search),
+              hintText: 'Search Songs',
+            ),
+          ),
+          Positioned(
+            right: 0,
+            child: IconButton(
+              icon: Icon(Icons.clear),
+              onPressed: () {
+                setState(() {
+                  _searchController.clear();
+                  _songsDisplay = _songs;
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
