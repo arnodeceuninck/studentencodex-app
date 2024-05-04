@@ -1,3 +1,4 @@
+import 'package:codex/presentation/screens/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:codex/data/data_model.dart';
 import 'package:codex/domain/repository.dart';
@@ -48,6 +49,18 @@ class _HomePageState extends State<HomePage> {
         title: _books.isNotEmpty && getSelectedBook() != null
             ? Text(getSelectedBook().title)
             : const Text('No book selected'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // Open settings view
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
+          ),
+        ],
       ),
       drawer: _buildDrawer(),
       body: SafeArea(
@@ -88,12 +101,6 @@ class _HomePageState extends State<HomePage> {
           }
         },
         itemCount: _books.length,
-      ),
-      footer: ListTile(
-        title: Text('Settings'),
-        onTap: () {
-          // Handle settings tap
-        },
       ),
     );
   }
