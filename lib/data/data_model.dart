@@ -1,13 +1,16 @@
 class Song {
-  String page="";
-  String title="";
-  String note="";
-  String melodie="";
-  String author="";
+  String page = "";
+  String title = "";
+  String note = "";
+  String melodie = "";
+  String author = "";
 
-  String content="";
+  String editUrl = "";
 
-  Song(this.page, this.title, this.note, this.melodie, this.author, this.content);
+  String content = "";
+
+  Song(this.page, this.title, this.note, this.melodie, this.author,
+      this.content, this.editUrl);
 
   Song.fromFson(Map<String, dynamic> json) {
     // if element not in json assign empty string, else element
@@ -17,9 +20,19 @@ class Song {
     melodie = json['melodie'] ?? "";
     author = json['author'] ?? "";
     content = json['content'] ?? "";
+
+    // editUrl is the url from the json, but localhost replaced with github
+    String url = json['url'] ?? "";
+    String githubEditPrefix =
+        "https://github.com/arnodeceuninck/studentencodex/blob/master/_";
+    editUrl = url.replaceAll("http://localhost:4000/",
+        githubEditPrefix); // in case codices.json comes from localhost
+    editUrl = editUrl.replaceAll("https://arnodeceuninck.github.io/",
+        githubEditPrefix); // in case codices.json comes from the github pages
+    editUrl = editUrl.replaceAll(".html", ".md");
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
       'page': page,
       'title': title,
@@ -32,8 +45,8 @@ class Song {
 }
 
 class Book {
-  String title="";
-  String id="";
+  String title = "";
+  String id = "";
 
   Book(this.title, this.id);
 
@@ -42,7 +55,7 @@ class Book {
     id = json['id'] ?? "";
   }
 
-  Map<String, dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
       'title': title,
       'id': id,

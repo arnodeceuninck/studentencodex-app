@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:codex/data/data_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SongDetailsPage extends StatelessWidget {
   final Song song;
@@ -16,6 +17,15 @@ class SongDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(songTitle()),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              // Open default browser on song.editUrl
+              launchUrl(Uri.parse(song.editUrl));
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -94,7 +104,8 @@ class SongDetailsPage extends StatelessWidget {
                 ),
 
               Padding(
-                padding: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 20.0),
+                padding: const EdgeInsets.only(
+                    left: 12.0, right: 12.0, bottom: 20.0),
                 child: Html(
                   data: song.content,
                 ),
