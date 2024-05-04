@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildDrawer() {
+  _buildDrawer() {
     return Drawer(
       child: ListView.builder(
         itemBuilder: (context, index) {
@@ -88,12 +88,6 @@ class _HomePageState extends State<HomePage> {
           }
         },
         itemCount: _books.length,
-      ),
-      footer: ListTile(
-        title: Text('Settings'),
-        onTap: () {
-          // Handle settings tap
-        },
       ),
     );
   }
