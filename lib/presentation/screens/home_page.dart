@@ -91,8 +91,7 @@ class _HomePageState extends State<HomePage> {
   Widget _searchBar() {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: Stack(
-        children: [
+      child: 
           TextField(
             controller: _searchController,
             autofocus: false,
@@ -109,26 +108,21 @@ class _HomePageState extends State<HomePage> {
                 }).toList();
               });
             },
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.search),
+              suffixIcon: IconButton(
+                icon: Icon(Icons.clear),
+                onPressed: () {
+                  setState(() {
+                    _searchController.clear();
+                    _songsDisplay = _songs;
+                  });
+                },
+              ),
               hintText: 'Search Songs',
             ),
           ),
-          Positioned(
-            right: 0,
-            child: IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () {
-                setState(() {
-                  _searchController.clear();
-                  _songsDisplay = _songs;
-                });
-              },
-            ),
-          ),
-        ],
-      ),
     );
   }
 

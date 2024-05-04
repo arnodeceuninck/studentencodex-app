@@ -14,7 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Antwerpse Codex',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.red,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+        ),
       ),
       home: const HomePage(),
     );
