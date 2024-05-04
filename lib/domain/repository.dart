@@ -9,12 +9,13 @@ Map<String, List<Song>> parseSongs(String responseBody) {
   final rodexOud = jsonDecode(responseBody)["rodex_oud"].cast<Map<String, dynamic>>();
   final antwerpseParsed = antwerpse.map<Song>((json) => Song.fromFson(json)).toList();
   final rodexOudParsed = rodexOud.map<Song>((json) => Song.fromFson(json)).toList();
-  return {"antwerpse": antwerpseParsed, "rodex_oud": rodexOudParsed};
+  final allCodices = <Song>[...antwerpseParsed, ...rodexOudParsed];
+  return {"antwerpse": antwerpseParsed, "rodex_oud": rodexOudParsed, "all_codices": allCodices};
 }
 
 Future<List<Book>> getBooks() {
   return rootBundle.loadString('assets/codices.json').then((jsonStr) {
-    return [Book("Antwerpse Codex", "antwerpse"), Book("Rodex Oud", "rodex_oud")];
+    return [Book("All Codices", "all_codices"), Book("Antwerpse Codex", "antwerpse"), Book("Rodex Oud", "rodex_oud")];
   });
 
 }

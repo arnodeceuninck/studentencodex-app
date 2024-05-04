@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   bool _isLoadingBooks = true;
   bool _isLoadingSongs = true;
 
-  String _selectedBookId = 'antwerpse';
+  String _selectedBookId = 'all_codices';
 
   @override
   void initState() {
