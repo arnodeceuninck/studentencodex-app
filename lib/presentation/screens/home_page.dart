@@ -3,6 +3,7 @@ import 'package:codex/data/data_model.dart';
 import 'package:codex/domain/repository.dart';
 import 'package:codex/presentation/components/loading_widget.dart';
 import 'package:codex/presentation/components/song_tile.dart';
+import 'package:wakelock/wakelock.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,6 +40,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // disable the wakelock, as it is only needed on the song details page
+    Wakelock.disable();
+
     return Scaffold(
       appBar: AppBar(
         title: _books.isNotEmpty && getSelectedBook() != null
@@ -91,38 +95,37 @@ class _HomePageState extends State<HomePage> {
   Widget _searchBar() {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: 
-          TextField(
-            controller: _searchController,
-            autofocus: false,
-            onChanged: (searchText) {
-              searchText = searchText.toLowerCase();
+      child: TextField(
+        controller: _searchController,
+        autofocus: false,
+        onChanged: (searchText) {
+          searchText = searchText.toLowerCase();
+          setState(() {
+            _songsDisplay = _songs.where((s) {
+              var stitle = s.title.toLowerCase();
+              var scontent = s.content.toLowerCase();
+              var spage = s.page.toLowerCase();
+              return stitle.contains(searchText) ||
+                  scontent.contains(searchText) ||
+                  spage.contains(searchText);
+            }).toList();
+          });
+        },
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          prefixIcon: Icon(Icons.search),
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
               setState(() {
-                _songsDisplay = _songs.where((s) {
-                  var stitle = s.title.toLowerCase();
-                  var scontent = s.content.toLowerCase();
-                  var spage = s.page.toLowerCase();
-                  return stitle.contains(searchText) ||
-                      scontent.contains(searchText) ||
-                      spage.contains(searchText);
-                }).toList();
+                _searchController.clear();
+                _songsDisplay = _songs;
               });
             },
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              prefixIcon: Icon(Icons.search),
-              suffixIcon: IconButton(
-                icon: Icon(Icons.clear),
-                onPressed: () {
-                  setState(() {
-                    _searchController.clear();
-                    _songsDisplay = _songs;
-                  });
-                },
-              ),
-              hintText: 'Search Songs',
-            ),
           ),
+          hintText: 'Search Songs',
+        ),
+      ),
     );
   }
 
