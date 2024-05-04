@@ -5,6 +5,8 @@ import 'package:codex/presentation/components/loading_widget.dart';
 import 'package:codex/presentation/components/song_tile.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -39,18 +41,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: _books.isNotEmpty && getSelectedBook() != null
             ? Text(getSelectedBook().title)
-            : Text('No book selected'),
+            : const Text('No book selected'),
       ),
       drawer: _buildDrawer(),
       body: SafeArea(
         child: Container(
           child: _isLoadingSongs
-              ? LoadingView()
+              ? const LoadingView()
               : ListView.builder(
                   itemBuilder: (context, index) {
                     return index == 0
                         ? _searchBar()
-                        : SongTile(song: this._songsDisplay[index - 1]);
+                        : SongTile(song: _songsDisplay[index - 1]);
                   },
                   itemCount: _songsDisplay.length + 1,
                 ),
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> {
       child: ListView.builder(
         itemBuilder: (context, index) {
           if (_isLoadingBooks) {
-            return LoadingView();
+            return const LoadingView();
           } else {
             final book = _books[index];
             return ListTile(
@@ -86,7 +88,7 @@ class _HomePageState extends State<HomePage> {
 
   _searchBar() {
     return Padding(
-      padding: EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12.0),
       child: TextField(
         autofocus: false,
         onChanged: (searchText) {

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:codex/data/data_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SongDetailsPage extends StatelessWidget {
   final Song song;
 
-  SongDetailsPage({required this.song});
+  const SongDetailsPage({super.key, required this.song});
 
   String songTitle() {
     return song.title;
@@ -16,7 +15,7 @@ class SongDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${songTitle()}'),
+        title: Text(songTitle()),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -40,7 +39,7 @@ class SongDetailsPage extends StatelessWidget {
                 height: 12.0,
               ),
               // show melodie, author, page and note if available
-              if (song.page != null && song.page.isNotEmpty)
+              if (song.page.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(
@@ -55,7 +54,7 @@ class SongDetailsPage extends StatelessWidget {
 
               // Same, but left aligned
 
-              if (song.melodie != null && song.melodie.isNotEmpty)
+              if (song.melodie.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(
@@ -68,7 +67,7 @@ class SongDetailsPage extends StatelessWidget {
                   ),
                 ),
 
-              if (song.author != null && song.author.isNotEmpty)
+              if (song.author.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(
@@ -81,7 +80,7 @@ class SongDetailsPage extends StatelessWidget {
                   ),
                 ),
 
-              if (song.note != null && song.note.isNotEmpty)
+              if (song.note.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
                   child: Text(

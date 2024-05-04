@@ -6,10 +6,10 @@ import 'package:flutter/services.dart' show rootBundle;
 
 Map<String, List<Song>> parseSongs(String responseBody) {
   final antwerpse = jsonDecode(responseBody)["antwerpse"].cast<Map<String, dynamic>>();
-  final rodex_oud = jsonDecode(responseBody)["rodex_oud"].cast<Map<String, dynamic>>();
-  final antwerpse_parsed = antwerpse.map<Song>((json) => Song.fromFson(json)).toList();
-  final rodex_oud_parsed = rodex_oud.map<Song>((json) => Song.fromFson(json)).toList();
-  return {"antwerpse": antwerpse_parsed, "rodex_oud": rodex_oud_parsed};
+  final rodexOud = jsonDecode(responseBody)["rodex_oud"].cast<Map<String, dynamic>>();
+  final antwerpseParsed = antwerpse.map<Song>((json) => Song.fromFson(json)).toList();
+  final rodexOudParsed = rodexOud.map<Song>((json) => Song.fromFson(json)).toList();
+  return {"antwerpse": antwerpseParsed, "rodex_oud": rodexOudParsed};
 }
 
 Future<List<Book>> getBooks() {

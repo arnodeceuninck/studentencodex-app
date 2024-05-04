@@ -5,7 +5,7 @@ import 'package:codex/presentation/screens/song_details_page.dart';
 class SongTile extends StatelessWidget {
   final Song song;
 
-  SongTile({required this.song});
+  const SongTile({super.key, required this.song});
 
   String songTitle() {
     return song.title;
@@ -14,12 +14,12 @@ class SongTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         children: [
           ListTile(
-            title: Text('${songTitle()}'),
-            trailing: Text('${song.page}'),
+            title: Text(songTitle()),
+            trailing: Text(song.page),
             onTap: () {
               Navigator.push(
                   context,
@@ -27,7 +27,7 @@ class SongTile extends StatelessWidget {
                       builder: (context) => SongDetailsPage(song: song)));
             },
           ),
-          Divider(
+          const Divider(
             thickness: 2.0,
           ),
         ],
