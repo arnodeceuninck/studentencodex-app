@@ -114,15 +114,17 @@ class _HomePageState extends State<HomePage> {
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           prefixIcon: Icon(Icons.search),
-          suffixIcon: IconButton(
-            icon: Icon(Icons.clear),
-            onPressed: () {
-              setState(() {
-                _searchController.clear();
-                _songsDisplay = _songs;
-              });
-            },
-          ),
+            suffixIcon: _searchController.text.isNotEmpty
+              ? IconButton(
+                icon: Icon(Icons.clear),
+                onPressed: () {
+                setState(() {
+                  _searchController.clear();
+                  _songsDisplay = _songs;
+                });
+                },
+              )
+              : null,
           hintText: 'Search Songs',
         ),
       ),
