@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:codex/data/data_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class SongDetailsPage extends StatelessWidget {
   final Song song;
@@ -16,20 +16,20 @@ class SongDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Keep the screen on while viewing a song
-    Wakelock.enable();
+    WakelockPlus.enable();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(songTitle()),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.edit),
-            onPressed: () {
-              // Open default browser on song.editUrl
-              launchUrl(Uri.parse(song.editUrl));
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.edit),
+        //     onPressed: () {
+        //       // Open default browser on song.editUrl
+        //       launchUrl(Uri.parse(song.editUrl));
+        //     },
+        //   ),
+        // ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

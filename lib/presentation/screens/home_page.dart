@@ -3,7 +3,7 @@ import 'package:codex/data/data_model.dart';
 import 'package:codex/domain/repository.dart';
 import 'package:codex/presentation/components/loading_widget.dart';
 import 'package:codex/presentation/components/song_tile.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   List<Song> _songs = [];
   List<Song> _songsDisplay = [];
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   bool _isLoadingBooks = true;
   bool _isLoadingSongs = true;
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // disable the wakelock, as it is only needed on the song details page
-    Wakelock.disable();
+    WakelockPlus.disable();
 
     return Scaffold(
       appBar: AppBar(
@@ -112,18 +112,18 @@ class _HomePageState extends State<HomePage> {
           });
         },
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          prefixIcon: Icon(Icons.search),
-            suffixIcon: _searchController.text.isNotEmpty
+          border: const OutlineInputBorder(),
+          prefixIcon: const Icon(Icons.search),
+          suffixIcon: _searchController.text.isNotEmpty
               ? IconButton(
-                icon: Icon(Icons.clear),
-                onPressed: () {
-                setState(() {
-                  _searchController.clear();
-                  _songsDisplay = _songs;
-                });
-                },
-              )
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    setState(() {
+                      _searchController.clear();
+                      _songsDisplay = _songs;
+                    });
+                  },
+                )
               : null,
           hintText: 'Search Songs',
         ),
