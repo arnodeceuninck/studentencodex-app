@@ -4,13 +4,14 @@ class Song {
   String note = "";
   String melodie = "";
   String author = "";
+  String recording = "";
 
   // String editUrl = "";
 
   String content = "";
 
   Song(this.page, this.title, this.note, this.melodie, this.author,
-      this.content); // this.editUrl
+      this.content, this.recording); // this.editUrl
 
   Song.fromFson(Map<String, dynamic> json) {
     // if element not in json assign empty string, else element
@@ -20,6 +21,7 @@ class Song {
     melodie = json['melodie'] ?? "";
     author = json['author'] ?? "";
     content = json['content'] ?? "";
+    recording = json['recording'] ?? "";
 
     // // editUrl is the url from the json, but localhost replaced with github
     // String url = json['url'] ?? "";
@@ -40,6 +42,7 @@ class Song {
       'melodie': melodie,
       'author': author,
       'content': content,
+      'recording': recording,
     };
   }
 }

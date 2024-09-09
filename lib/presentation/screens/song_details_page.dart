@@ -21,15 +21,16 @@ class SongDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(songTitle()),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.edit),
-        //     onPressed: () {
-        //       // Open default browser on song.editUrl
-        //       launchUrl(Uri.parse(song.editUrl));
-        //     },
-        //   ),
-        // ],
+        actions: [
+          if (song.recording.isNotEmpty)
+            IconButton(
+              icon: const Icon(Icons.headphones),
+              onPressed: () {
+                // Open default browser on song.editUrl
+                launchUrl(Uri.parse(song.recording));
+              },
+            ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
