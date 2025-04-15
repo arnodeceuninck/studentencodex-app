@@ -32,3 +32,6 @@ More info: https://docs.flutter.dev/deployment/android
 
 Note, last time I did the flutter build command, I got following warning: 
 You are applying Flutter's app_plugin_loader Gradle plugin imperatively using the apply script method, which is deprecated and will be removed in a future release. Migrate to applying Gradle plugins with the declarative plugins block: https://flutter.dev/go/flutter-gradle-plugin-apply
+
+
+if ever working on ios; compare with a new flutter create first. 
