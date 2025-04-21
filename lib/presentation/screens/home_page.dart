@@ -97,11 +97,9 @@ class _HomePageState extends State<HomePage> {
           const Divider(),
           ListTile(
             title: const Text('Web version'),
-            onTap: () async {
+            onTap: () {
               final url = Uri.parse('https://codex.arnodece.com');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
+              launchUrl(url);
             },
           ),
         ],

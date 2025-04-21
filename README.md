@@ -24,9 +24,10 @@ Just run it, this generates code from the search.json file. Copy paste the outpu
 Build apk: flutter build apk --split-per-abi
 
 ### Building for play store
-Be sure the keys are set up correctly
-
-flutter build appbundle
+Be sure the keys are set up correctly (key.properties and upload-keystore.jks)
+```
+flutter build appbundle --release
+```
 
 More info: https://docs.flutter.dev/deployment/android
 
