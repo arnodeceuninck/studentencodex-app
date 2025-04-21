@@ -4,6 +4,7 @@ import 'package:codex/domain/repository.dart';
 import 'package:codex/presentation/components/loading_widget.dart';
 import 'package:codex/presentation/components/song_tile.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -69,25 +70,41 @@ class _HomePageState extends State<HomePage> {
 
   _buildDrawer() {
     return Drawer(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          if (_isLoadingBooks) {
-            return const LoadingView();
-          } else {
-            final book = _books[index];
-            return ListTile(
-              title: Text(book.title),
-              selected: book.id == _selectedBookId,
-              onTap: () {
-                Navigator.pop(context);
-                if (_selectedBookId != book.id) {
-                  fetchSongs(book.id);
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                if (_isLoadingBooks) {
+                  return const LoadingView();
+                } else {
+                  final book = _books[index];
+                  return ListTile(
+                    title: Text(book.title),
+                    selected: book.id == _selectedBookId,
+                    onTap: () {
+                      Navigator.pop(context);
+                      if (_selectedBookId != book.id) {
+                        fetchSongs(book.id);
+                      }
+                    },
+                  );
                 }
               },
-            );
-          }
-        },
-        itemCount: _books.length,
+              itemCount: _books.length,
+            ),
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('Web version'),
+            onTap: () async {
+              final url = Uri.parse('https://codex.arnodece.com');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
+          ),
+        ],
       ),
     );
   }
